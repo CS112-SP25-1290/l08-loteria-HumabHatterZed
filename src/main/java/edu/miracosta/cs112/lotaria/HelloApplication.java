@@ -2,11 +2,11 @@ package edu.miracosta.cs112.lotaria;
 
 import javafx.application.Application;
 import javafx.scene.Scene;
-import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 public class HelloApplication extends Application {
-    private static final LoteriaCard[] LOTERIA_CARDS = {
+    public static final LoteriaCard[] LOTERIA_CARDS = {
             new LoteriaCard("Las matematicas", "1.png", 1),
             new LoteriaCard("Las ciencias", "2.png", 2),
             new LoteriaCard("La Tecnología", "8.png", 8),
@@ -15,14 +15,14 @@ public class HelloApplication extends Application {
 
     @Override
     public void start(Stage stage) {
-        StackPane root = new StackPane();
-        Scene scene = new Scene(root, 320, 240);
+        HelloBuilder builder = new HelloBuilder();
+        Scene scene = new Scene(builder.build(), 350, 600);
         stage.setTitle("Loteria!");
         stage.setScene(scene);
         stage.show();
     }
 
     public static void main(String[] args) {
-        launch();
+        launch(args);
     }
 }

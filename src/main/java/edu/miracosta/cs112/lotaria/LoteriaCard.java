@@ -4,6 +4,7 @@ import javafx.scene.image.Image;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.InputStream;
 
 /* UML CLASS DIAGRAM:
 -----------------------------------------
@@ -78,10 +79,10 @@ public class LoteriaCard {
      * @return returns Image object that can be used to display it in an ImageView in GUI
      **/
     public Image getImage() {
-        FileInputStream input = null;
+        InputStream input = null;
         try {
-            input = new FileInputStream("file:./resources/" + this.imageName);
-        } catch (FileNotFoundException e) {
+            input = getClass().getClassLoader().getResourceAsStream(this.imageName);
+        } catch (Exception e) {
             //e.printStackTrace();
             System.err.println("ERROR: could not open file.");
             System.exit(0);
